@@ -17,8 +17,8 @@ connection.once('open', ()=>{
 app.use(cors());
 app.use(express.json());
 
-// const exercisesRouter = require('./routes/exercises');
-// const usersRouter = require('./routes/users');
+const profileRouter = require('./routes/profiles');
+const postRouter = require('./routes/posts');
 
 // app.use('/exercises', exercisesRouter);
 // app.use('/users', usersRouter);

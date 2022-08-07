@@ -1,6 +1,7 @@
 const express = require('express');
 const cors = require('cors');
 const mongoose = require('mongoose');
+const cookieParser = require("cookie-parser");
 
 require('dotenv').config();
 
@@ -16,10 +17,13 @@ connection.once('open', ()=>{
 
 app.use(cors());
 app.use(express.json());
+app.use(cookieParser());
 
-const profileRouter = require('./routes/profiles');
-const postRouter = require('./routes/posts');
+//const profileRouter = require('./routes/profiles');
+//const postRouter = require('./routes/posts');
+const auth = require("./routes/auth")
 
+app.use('/api', auth);
 // app.use('/exercises', exercisesRouter);
 // app.use('/users', usersRouter);
 

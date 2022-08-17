@@ -36,12 +36,12 @@ const Login = () => {
         <h1>Login</h1>
         <form onSubmit={onSubmit}>
           <div className="input-area flex">
-            <label className="form-label">Username</label>
+            <label className="form-label" htmlFor='usernameLogin' >Username</label>
             <input type="text" className="form-control" id="usernameLogin" onChange={onChangeUsername} />
           </div>
           <div className="input-area flex">
-            <label className="form-label">Password</label>
-            <input type="password" className="form-control" id="exampleInputPassword1" onChange={onChangePassword} />
+            <label className="form-label" htmlFor='userPassword'>Password</label>
+            <input type="password" className="form-control" id="userPassword" onChange={onChangePassword} />
           </div>
           <button type="login" className="btn btn-secondary">Login</button>
         </form>

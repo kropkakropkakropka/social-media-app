@@ -1,10 +1,8 @@
 import React from 'react'
 
-// import ProfilePreview from './components/ProfilePreview';
-// import Post from './components/Post';
-// import Leaderboard from './components/Leaderboard';
 import Register from './pages/Register';
 import Login from './pages/Login';
+import Homepage from './pages/Homepage'
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 function App() {
@@ -14,6 +12,7 @@ function App() {
         <Routes>
           <Route exact path="/register" element={<Register />} />
           <Route exact path="/" element={<Login />} />
+          <Route exact path="/homepage" element={<Homepage />} />
         </Routes>
       </div>
     </Router>

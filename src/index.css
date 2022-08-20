@@ -86,10 +86,9 @@ button{
 
 .bg-primary{background-color: var(--bg-primary);}
 .bg-content{background-color: var(--bg-content);}
-.flex{
-    display: flex;
-}
+
 .center{
+    display: flex;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
@@ -136,4 +135,33 @@ button{
     border-radius: 5px;
     border: none;
     padding: 0.4rem 0.6rem;
+}
+
+#homepage{
+  min-height: 100vh;
+  padding: 2em 8em;
+}
+#profile-preview{
+  position: fixed;
+  display: flex;
+  justify-content: space-between;
+  width: 20%;
+  background: var(--bg-content);
+  border-radius: 10px;
+  padding: 1.2em 1.2em;
+}
+#profile-preview .stats{
+  display: flex;
+  justify-content: space-evenly;
+}
+#profile-preview .xp-bar{
+  display: flex;
+}
+#profile-preview img{
+  width: 30%;
+  border-radius: 50%;
+}
+#profile-preview h1{
+  font-family: var(--ff-info);
+  font-weight: 600;
 }

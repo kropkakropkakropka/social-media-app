@@ -41,7 +41,7 @@ const Register = () => {
 
   }
   return (
-    <div className='flex form-container center'>
+    <div className='form-container center'>
       <div className='form bg-content'>
         <h1>Register</h1>
         <form onSubmit={onSubmit}>

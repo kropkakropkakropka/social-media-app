@@ -31,7 +31,7 @@ const Login = () => {
   }
 
   return (
-    <div className='flex form-container center'>
+    <div className='form-container center'>
       <div className='form bg-content'>
         <h1>Login</h1>
         <form onSubmit={onSubmit}>

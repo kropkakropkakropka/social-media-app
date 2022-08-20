@@ -5,7 +5,7 @@ import Leaderboard from '../components/Leaderboard';
 
 const Homepage = () => {
   return (
-    <div>
+    <div id='homepage'>
         <ProfilePreview />
         <Post />
         <Leaderboard />

@@ -6,10 +6,7 @@ const profileAuth = {
     register: async (req, res)=>{
         try {
             const {firstname, lastname, username, password} = req.body;
-            //const newUsername = username.toLowerCase().replace(/ /g, ''); //transfer the input to lowercase
             const checkUsername = await Profile.findOne({username: username}); //checks if username exists
-            //const testhasla = "test12345";
-            //if it does throw an error
             if(checkUsername){
                 res.status(400).json({err: 'Username is alredy taken'})
             }

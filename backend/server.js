@@ -23,9 +23,7 @@ app.use(cookieParser());
 //const postRouter = require('./routes/posts');
 const auth = require("./routes/auth")
 
-app.use('/', auth);
-// app.use('/exercises', exercisesRouter);
-// app.use('/users', usersRouter);
+app.use('/api', auth);
 
 app.listen(port, ()=>{
     console.log(`Server is running on port ${port}`);

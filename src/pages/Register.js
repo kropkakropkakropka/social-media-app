@@ -1,12 +1,23 @@
-import React, { useState } from 'react'
-import axios from 'axios';
+import React, { useState, useEffect } from 'react'
+import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { registerProfile } from '../redux/profile/profileActions';
 
 const Register = () => {
   const [username, setUsername] = useState('');
   const [firstname, setFirstname] = useState('');
   const [lastname, setLastname] = useState('');
   const [password, setPassword] = useState('');
+
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+
+  const { loading, profileInfo, error, success } = useSelector((state) => state.profile);
+
+  useEffect(()=>{
+    if(success){navigate('/')}
+  }, [navigate, profileInfo, success]);
 
   const onChangeUsername = (e) => {
     setUsername(e.target.value);
@@ -30,15 +41,15 @@ const Register = () => {
     const newProfile = {
       firstname: firstname,
       lastname: lastname,
-      username: username,
+      username: username.toLowerCase(),
       password: password
     }
-    axios.post('http://localhost:5000/register', newProfile)
-      .then(res => console.log(res.data))
-      .catch((error) => {
-        console.log(error);
-      });
-
+    dispatch(registerProfile(newProfile));
+    // axios.post('http://localhost:5000/register', newProfile)
+    //   .then(res => console.log(res.data))
+    //   .catch((error) => {
+    //     console.log(error);
+    //   });
   }
   return (
     <div className='form-container center'>

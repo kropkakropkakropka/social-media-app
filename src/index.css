@@ -86,7 +86,7 @@ button{
 
 .bg-primary{background-color: var(--bg-primary);}
 .bg-content{background-color: var(--bg-content);}
-
+.flex{display: flex;}
 .center{
     display: flex;
     justify-content: center;

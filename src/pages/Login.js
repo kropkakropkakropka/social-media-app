@@ -1,11 +1,22 @@
-import React, { useState } from 'react'
-import axios from 'axios';
+import React, { useState, useEffect } from 'react'
+import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { loginProfile } from '../redux/profile/profileActions';
 
 const Login = () => {
 
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+
+  const { loading, profileInfo, error, success } = useSelector((state) => state.profile);
+  
+  useEffect(()=>{
+    if(success){navigate('/homepage')}
+  }, [navigate, profileInfo, success]);
 
   const onChangeUsername = (e) => {
     setUsername(e.target.value);
@@ -22,12 +33,7 @@ const Login = () => {
       username: username,
       password: password
     }
-    axios.post('http://localhost:5000/login', profile)
-      .then(res => console.log(res.data))
-      .catch((error) => {
-        console.log(error);
-      });
-
+    dispatch(loginProfile(profile))
   }
 
   return (

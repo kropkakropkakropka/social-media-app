@@ -1,10 +1,12 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { registerProfile } from './profileActions';
+import { registerProfile, loginProfile } from './profileActions';
+
+const accessToken = localStorage.getItem('accessToken');
 
 const initialState = {
     loading: false,
     profileInfo: {},
-    userToken: null,
+    accessToken,
     error: null,
     success: false
 }
@@ -14,6 +16,20 @@ const profileSlice = createSlice({
     initialState,
     reducers: {},
     extraReducers: {
+        [loginProfile.pending]: (state) =>{
+            state.loading = true
+            state.error = null
+        },
+        [loginProfile.fulfilled]: (state, { payload }) =>{
+            state.loading = false
+            state.success = true
+            state.accessToken = payload.accessToken
+            state.profileInfo = payload
+        },
+        [loginProfile.rejected]: (state, { payload }) =>{
+            state.loading = false
+            state.error = payload
+        },
         [registerProfile.pending]: (state) =>{
             state.loading = true
             state.error = null

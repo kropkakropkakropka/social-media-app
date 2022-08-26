@@ -3,35 +3,35 @@ const bcrypt = require("bcrypt")
 const webtoken = require("jsonwebtoken")
 
 const profileAuth = {
-    register: async (req, res)=>{
+    register: async (req, res) => {
         try {
-            const {firstname, lastname, username, password} = req.body;
-            const checkUsername = await Profile.findOne({username: username}); //checks if username exists
-            if(checkUsername){
-                res.status(400).json({err: 'Username is alredy taken'})
+            const { firstname, lastname, username, password } = req.body;
+            const checkUsername = await Profile.findOne({ username: username }); //checks if username exists
+            if (checkUsername) {
+                res.status(400).json({ err: 'Username is alredy taken' })
             }
             //checks if password isnt too short
-            if(password.length < 8){
-                res.status(400).json({err: 'Password must be at least 8 characters'})
+            if (password.length < 8) {
+                res.status(400).json({ err: 'Password must be at least 8 characters' })
             }
 
             //hash password
             const hashPassword = bcrypt.hashSync(password, 12);
 
             const newProfile = new Profile({
-                firstname, 
-                lastname, 
-                username, 
+                firstname,
+                lastname,
+                username,
                 password: hashPassword
             })
 
-            const accessToken = createAccessToken({id: newProfile._id});
-            const refreshToken = createRefreshToken({id: newProfile._id});
+            const accessToken = createAccessToken({ id: newProfile._id });
+            const refreshToken = createRefreshToken({ id: newProfile._id });
 
-            res.cookie('refreshtoken', refreshToken,{
+            res.cookie('refreshtoken', refreshToken, {
                 httpOnly: true,
-                path:"api/refresh_token",
-                maxAge: 24*30*60*60*1000
+                path: "api/refresh_token",
+                maxAge: 24 * 30 * 60 * 60 * 1000
             });
 
             await newProfile.save();
@@ -39,7 +39,7 @@ const profileAuth = {
             res.json({
                 message: "registered successfully",
                 accessToken,
-                profile:{
+                profile: {
                     ...newProfile._doc
                 }
             })
@@ -48,31 +48,31 @@ const profileAuth = {
             res.status(500).json("error: " + error);
         }
     },
-    login: async (req, res)=>{
+    login: async (req, res) => {
         try {
-            const {username, password} = req.body;
+            const { username, password } = req.body;
 
-            const checkUsername = await Profile.findOne({username: username});
+            const checkUsername = await Profile.findOne({ username: username });
 
-            if(!checkUsername) return res.status(400).json({message: 'User doesnt exist'});
+            if (!checkUsername) return res.status(400).json({ message: 'User doesnt exist' });
 
             const comparePassword = await bcrypt.compare(password, checkUsername.password);
 
-            if(!comparePassword) return res.status(400).json({message: 'Wrong password'});
+            if (!comparePassword) return res.status(400).json({ message: 'Wrong password' });
 
-            const accessToken = createAccessToken({id: checkUsername._id});
-            const refreshToken = createRefreshToken({id: checkUsername._id});
+            const accessToken = createAccessToken({ id: checkUsername._id });
+            const refreshToken = createRefreshToken({ id: checkUsername._id });
 
-            res.cookie('refreshtoken', refreshToken,{
+            res.cookie('refreshtoken', refreshToken, {
                 httpOnly: true,
                 path: "/api/refresh_token",
-                maxAge: 24*30*60*60*1000
+                maxAge: 24 * 30 * 60 * 60 * 1000
             });
 
             res.json({
                 message: "logined successfully",
                 accessToken,
-                profile:{
+                profile: {
                     ...checkUsername._doc
                 }
             })
@@ -81,15 +81,15 @@ const profileAuth = {
             res.status(500).json("error: " + error);
         }
     },
-    logout: async (req, res)=>{
+    logout: async (req, res) => {
         try {
-            res.clearCookie('refreshtoken', {path: "/api/refresh_token"});
-            res.json({message: "Logged out"});
+            res.clearCookie('refreshtoken', { path: "/api/refresh_token" });
+            res.json({ message: "Logged out" });
         } catch (error) {
             res.status(500).json("error: " + error);
         }
     },
-    generateToken: async (req, res)=>{
+    generateToken: async (req, res) => {
         try {
             // const refreshToken = res.cookies.refreshtoken;
             // if(!refreshToken) return res.status(400).json({message: "You Need to Login"});
@@ -102,14 +102,25 @@ const profileAuth = {
             res.status(500).json("error: " + error);
         }
     },
+    getProfile: async (req, res) => {
+        try {
+            const profile = await Profile.findById(req._id)
+
+            if (profile) { res.json(profile) }
+            else { res.status(400).json("User was not found") }
+
+        } catch (error) {
+            res.status(500).json("error: " + error);
+        }
+    },
 }
 
-const createAccessToken = (payload) =>{
-    return webtoken.sign(payload, process.env.ACCESS_TOKEN_SECRET, {expiresIn:"1d"}) //returns a web token as string
+const createAccessToken = (payload) => {
+    return webtoken.sign(payload, process.env.ACCESS_TOKEN_SECRET, { expiresIn: "1d" }) //returns a web token as string
 }
 
-const createRefreshToken = (payload) =>{
-    return webtoken.sign(payload, process.env.REFRESH_TOKEN_SECRET, {expiresIn:"30d"})
+const createRefreshToken = (payload) => {
+    return webtoken.sign(payload, process.env.REFRESH_TOKEN_SECRET, { expiresIn: "30d" })
 }
 
 module.exports = profileAuth;

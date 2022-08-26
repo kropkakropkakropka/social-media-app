@@ -10,7 +10,7 @@ const profileSchema = new Schema({
     desc: {type: String, maxlength: 155, default:''},
     profileImg: {type: String, default:''},
     xp: {type: Number, required: true, default: 0},
-    posts: [Object],
+    //posts: [Object],
     friends: [String]
 },{timestamps: true})
 

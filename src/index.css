@@ -137,6 +137,7 @@ h6{
     padding: 1.2rem;
 }
 .form .input-area{
+    display: flex;
     flex-direction: column;
     gap: 0.5rem;
     margin-bottom: 1.5rem;
@@ -149,6 +150,8 @@ h6{
 }
 
 #homepage{
+  display: flex;
+  justify-content: space-between;
   min-height: 100vh;
   padding: 2em 8em;
 }
@@ -178,6 +181,7 @@ h6{
   flex-direction: column;
   gap: 3rem;
   margin-top: 2rem;
+  width: 30rem;
 }
 #posts .post{
   display: flex;
@@ -186,7 +190,7 @@ h6{
   background-color: var(--bg-content);
   border-radius: 10px;
   padding: 2em 2em;
-  width: 30rem;
+  width: 100%;
 }
 #posts .post-info{
   display: flex;

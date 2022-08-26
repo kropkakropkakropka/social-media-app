@@ -6,9 +6,9 @@ import Leaderboard from '../components/Leaderboard';
 const Homepage = () => {
   return (
     <div id='homepage'>
-        <ProfilePreview />
-        <Post />
-        <Leaderboard />
+      <div><ProfilePreview /></div>
+      <div><Post /></div>
+      <div><Leaderboard /></div>        
     </div>
   )
 }

@@ -7,7 +7,7 @@ function Post() {
         <section id='posts'>
             <article className='post'>
                 <div className='post-info'>
-                    <div class="user-info">
+                    <div className="user-info">
                         <img className='profile-picture' src='https://avatars.githubusercontent.com/u/66757774?v=4' alt='profile picture' />
                         <h3>Jack Newton</h3>
                     </div>
@@ -15,9 +15,11 @@ function Post() {
                 </div>
                 <section className='content'>
                     this is content
+                    this is content
                 </section>
                 <section className='stats'>
                     <FontAwesomeIcon className='icon' icon={faArrowUp}></FontAwesomeIcon>
+                    <span>0</span>
                     <FontAwesomeIcon className='icon' icon={faArrowDown}></FontAwesomeIcon>
                     <FontAwesomeIcon className='icon' icon={faComment}></FontAwesomeIcon>
                 </section>

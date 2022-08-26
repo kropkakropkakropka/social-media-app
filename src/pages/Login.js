@@ -41,11 +41,11 @@ const Login = () => {
       <div className='form bg-content'>
         <h1>Login</h1>
         <form onSubmit={onSubmit}>
-          <div className="input-area flex">
+          <div className="input-area">
             <label className="form-label" htmlFor='usernameLogin' >Username</label>
             <input type="text" className="form-control" id="usernameLogin" onChange={onChangeUsername} />
           </div>
-          <div className="input-area flex">
+          <div className="input-area">
             <label className="form-label" htmlFor='userPassword'>Password</label>
             <input type="password" className="form-control" id="userPassword" onChange={onChangePassword} />
           </div>

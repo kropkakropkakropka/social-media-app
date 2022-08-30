@@ -104,10 +104,10 @@ const profileAuth = {
     },
     getProfile: async (req, res) => {
         try {
-            const profile = await Profile.findById(req._id)
+            const profile = await Profile.findById(req.profile._id);
 
             if (profile) { res.json(profile) }
-            else { res.status(400).json("User was not found") }
+            else { res.status(404).json("User was not found") }
 
         } catch (error) {
             res.status(500).json("error: " + error);

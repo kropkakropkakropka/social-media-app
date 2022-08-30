@@ -12,8 +12,8 @@ const Login = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  const { loading, profileInfo, error, success } = useSelector((state) => state.profile);
-  
+  const { loading, profileInfo, accessToken, error, success } = useSelector((state) => state.profile);
+
   useEffect(()=>{
     if(success){navigate('/homepage')}
   }, [navigate, profileInfo, success]);

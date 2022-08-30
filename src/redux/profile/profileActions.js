@@ -44,3 +44,27 @@ export const loginProfile = createAsyncThunk(
         }
     }
 )
+
+export const getProfileDetails = createAsyncThunk(
+    '/getProfileDetails', //action type string
+    //calback function
+    async(arg, { getState, rejectWithValue }) => {
+        try{
+            const { profile } = getState(); //get profile data from store
+
+            const config = {
+                headers: {
+                    Authorization: `Bearer ${profile.accessToken}`,
+                },
+            }
+            const { data } = await axios.get('http://localhost:5000/api/profile', config)
+            return data
+        }catch(error){
+            if(error.response && error.response.data.message){
+                return rejectWithValue(error.response.data.message)
+            }else{
+                return rejectWithValue(error.message)
+            }
+        }
+    }
+)

@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { registerProfile, loginProfile } from './profileActions';
+import { registerProfile, loginProfile, getProfileDetails } from './profileActions';
 
 const accessToken = localStorage.getItem('accessToken');
 
@@ -41,7 +41,19 @@ const profileSlice = createSlice({
         [registerProfile.rejected]: (state, { payload }) =>{
             state.loading = false
             state.error = payload
+        },
+        [getProfileDetails.pending]: (state) =>{
+            state.loading = true
+        },
+        [getProfileDetails.fulfilled]: (state, { payload }) =>{
+            state.loading = false
+            state.profileInfo = payload
+        },
+        [getProfileDetails.rejected]: (state, { payload }) =>{
+            state.loading = false
+            state.error = payload
         }
+        //Payload is a non-official, naming convention for the property that holds the actual data in a Redux action object
     }
 })
 

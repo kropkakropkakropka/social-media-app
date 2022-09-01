@@ -12,7 +12,7 @@ const Login = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  const { loading, profileInfo, accessToken, error, success } = useSelector((state) => state.profile);
+  const { accessToken } = useSelector((state) => state.profile);
 
   useEffect(()=>{
     if(accessToken){

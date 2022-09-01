@@ -13,11 +13,11 @@ const Register = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  const { loading, profileInfo, error, success } = useSelector((state) => state.profile);
+  const { success } = useSelector((state) => state.profile);
 
   useEffect(()=>{
     if(success){navigate('/')}
-  }, [navigate, profileInfo, success]);
+  }, [navigate, success]);
 
   const onChangeUsername = (e) => {
     setUsername(e.target.value);
@@ -45,11 +45,6 @@ const Register = () => {
       password: password
     }
     dispatch(registerProfile(newProfile));
-    // axios.post('http://localhost:5000/register', newProfile)
-    //   .then(res => console.log(res.data))
-    //   .catch((error) => {
-    //     console.log(error);
-    //   });
   }
   return (
     <div className='form-container center'>

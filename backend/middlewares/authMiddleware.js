@@ -1,5 +1,5 @@
-import webtoken from 'jsonwebtoken';
-import Profile from '../models/profile.model';
+const webtoken = require("jsonwebtoken")
+const Profile = require("../models/profile.model");
 
 const protect = async (req, res, next) =>{
     let token;
@@ -13,7 +13,7 @@ const protect = async (req, res, next) =>{
 
             req.profile = await Profile.findById(decoded.id).select('-password');
 
-            next() //hmm
+            next() //runs next callback function 
         } catch (error) {
             res.status(401).json("error: Not authorized, invalid token");
         }
@@ -24,4 +24,4 @@ const protect = async (req, res, next) =>{
     }
 }
 
-export {protect};
+module.exports = protect

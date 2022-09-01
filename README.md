@@ -7,15 +7,10 @@
 - React
 - Node.js
 - Express
-- MongoDB
+- MongoDB 
 
-
-## Author
-
-- Website - 
-- Twitter - 
-
-Todo:
-- logging out
+## Todo:
+- profile page
+- transition to scss
 
 

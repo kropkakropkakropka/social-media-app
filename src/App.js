@@ -1,5 +1,5 @@
 import React from 'react'
-
+import ProtectedRoute from './routing/ProtectedRoute';
 import Register from './pages/Register';
 import Login from './pages/Login';
 import Homepage from './pages/Homepage'
@@ -12,7 +12,9 @@ function App() {
         <Routes>
           <Route exact path="/register" element={<Register />} />
           <Route exact path="/" element={<Login />} />
-          <Route exact path="/homepage" element={<Homepage />} />
+          <Route element={<ProtectedRoute />}>
+            <Route exact path="/homepage" element={<Homepage />} />
+          </Route>
         </Routes>
       </div>
     </Router>

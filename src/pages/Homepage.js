@@ -1,7 +1,8 @@
-import React, { useState, useEffect } from 'react'
+import React, { useEffect } from 'react'
 import ProfilePreview from '../components/ProfilePreview';
 import Post from '../components/Post';
 import { getProfileDetails } from '../redux/profile/profileActions';
+import { logout } from '../redux/profile/profileSlice'
 import Leaderboard from '../components/Leaderboard';
 import { useDispatch, useSelector } from 'react-redux';
 
@@ -16,12 +17,19 @@ const Homepage = () => {
     }
   }, [accessToken, dispatch])
 
+  const logoutButton = () =>{
+    dispatch(logout());
+  }
+
   const fullName = profileInfo.firstname + ' ' + profileInfo.lastname;
   const img = profileInfo.profileImg === '' ? 'https://avatars.githubusercontent.com/u/66757774?v=4' : profileInfo.profileImg;
 
   return (
     <div id='homepage'>
-      <div><ProfilePreview fullName={fullName} img={img} /></div>
+      <div>
+        <ProfilePreview fullName={fullName} img={img} />
+        <button className='logout-button' onClick={logoutButton}>Logout</button>
+      </div>
       <div><Post /></div>
       <div><Leaderboard /></div>        
     </div>

@@ -2,7 +2,7 @@
 
 :root{
     --bg-primary: #2c3e50;
-    --bg-content: #8e44ad; /*#f368e0*/
+    --bg-content: #10ac84; /*#f368e0*/
     --ff-info: 'Source Code Pro', monospace; /*500,600,900 */
     --ff-normal: 'Poppins', sans-serif; /*300,500 */
 }
@@ -148,12 +148,22 @@ h6{
     border: none;
     padding: 0.4rem 0.6rem;
 }
-
+#unauthorized{
+  flex-direction: column;
+}
 #homepage{
   display: flex;
   justify-content: space-between;
   min-height: 100vh;
   padding: 2em 8em;
+}
+#homepage .logout-button{
+  position: fixed;
+  bottom: 0;
+  background: var(--bg-content);
+  padding: .2em 1.2em;
+  margin-bottom: 1rem;
+  border-radius: 10px;
 }
 #profile-preview{
   position: fixed;

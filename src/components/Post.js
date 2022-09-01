@@ -8,14 +8,13 @@ function Post() {
             <article className='post'>
                 <div className='post-info'>
                     <div className="user-info">
-                        <img className='profile-picture' src='https://avatars.githubusercontent.com/u/66757774?v=4' alt='profile picture' />
+                        <img className='profile-picture' src='https://avatars.githubusercontent.com/u/66757774?v=4' alt='profile' />
                         <h3>Jack Newton</h3>
                     </div>
                     <p>2022</p>
                 </div>
                 <section className='content'>
-                    this is content
-                    this is content
+                    this is just a placeholder
                 </section>
                 <section className='stats'>
                     <FontAwesomeIcon className='icon' icon={faArrowUp}></FontAwesomeIcon>

@@ -3,6 +3,7 @@ import { registerProfile, loginProfile, getProfileDetails } from './profileActio
 
 const accessToken = localStorage.getItem('accessToken');
 
+
 const initialState = {
     loading: false,
     profileInfo: {},

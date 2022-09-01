@@ -15,8 +15,13 @@ const Login = () => {
   const { loading, profileInfo, accessToken, error, success } = useSelector((state) => state.profile);
 
   useEffect(()=>{
-    if(success){navigate('/homepage')}
-  }, [navigate, profileInfo, success]);
+    if(accessToken){
+      navigate('/homepage')
+    }
+    else{
+      navigate('/');
+    }
+  }, [navigate, accessToken]);
 
   const onChangeUsername = (e) => {
     setUsername(e.target.value);

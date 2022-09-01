@@ -16,6 +16,6 @@
 - Twitter - 
 
 Todo:
-- authenticated user should be redirected directly to homepage
+- logging out
 
 

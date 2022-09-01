@@ -16,8 +16,8 @@ const Homepage = () => {
     }
   }, [accessToken, dispatch])
 
-  const fullName = profileInfo.profile.firstname + ' ' + profileInfo.profile.lastname;
-  const img = profileInfo.profile.profileImg === '' ? 'https://avatars.githubusercontent.com/u/66757774?v=4' : profileInfo.profile.profileImg;
+  const fullName = profileInfo.firstname + ' ' + profileInfo.lastname;
+  const img = profileInfo.profileImg === '' ? 'https://avatars.githubusercontent.com/u/66757774?v=4' : profileInfo.profileImg;
 
   return (
     <div id='homepage'>

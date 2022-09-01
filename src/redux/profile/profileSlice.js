@@ -15,8 +15,16 @@ const initialState = {
 const profileSlice = createSlice({
     name: 'profile',
     initialState,
-    reducers: {},
-    extraReducers: {
+    reducers: {//not asynchronus
+        logout: (state) => {
+            localStorage.removeItem('accessToken')
+            state.loading = false
+            state.profileInfo = null
+            state.accessToken = null
+            state.error = null
+        }
+    },
+    extraReducers: { //asynchronus 
         [loginProfile.pending]: (state) =>{
             state.loading = true
             state.error = null
@@ -60,5 +68,5 @@ const profileSlice = createSlice({
 
 //createSlice is a function that accepts an initial state, an object of reducer functions, 
 //and a "slice name", and automatically generates action creators and action types that correspond to the reducers and state.
-
+export const { logout } = profileSlice.actions
 export default profileSlice.reducer;

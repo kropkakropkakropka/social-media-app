@@ -1,15 +1,12 @@
 import React from 'react'
+import { Link } from 'react-router-dom';
 
 function ProfilePreview(props) {
   return (
     <div id='profile-preview'>
       <img className='profile-picture' src={props.img} alt='profile picture' />
       <div>
-        <h2>{props.fullName}</h2>
-        <section className="stats">
-          <p>0</p>
-          <p>0</p>
-        </section>
+        <h2><Link id='profile-link' to="/profilepage">{props.username}</Link></h2>
         <section className='xp-bar'>
           <div>s</div>
           <div>xp bar</div>

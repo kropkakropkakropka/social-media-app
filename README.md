@@ -10,7 +10,7 @@
 - MongoDB 
 
 ## Todo:
-- profile page
-- transition to scss
+- form to create post
+- transition to scss, and clean up styling (it's really bad now)
 
 

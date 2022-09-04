@@ -2,7 +2,7 @@
 
 :root{
     --bg-primary: #2c3e50;
-    --bg-content: #10ac84; /*#f368e0*/
+    --bg-content: #60a3bc;
     --ff-info: 'Source Code Pro', monospace; /*500,600,900 */
     --ff-normal: 'Poppins', sans-serif; /*300,500 */
 }
@@ -174,6 +174,10 @@ h6{
   border-radius: 10px;
   padding: 1.2em 1.2em;
 }
+#profile-preview #profile-link{
+  text-decoration: none;
+  color: black;
+}
 #profile-preview .stats{
   display: flex;
   justify-content: space-evenly;
@@ -224,4 +228,43 @@ h6{
 }
 #posts .stats .icon{
   padding-inline: 0.5rem;
+}
+
+#profile-page{
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  min-height: 100vh;
+  gap: 3rem;
+}
+#profile-page img{
+  width: 100px;
+}
+#profile-page .profile-info{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 2rem;
+}
+#profile-page .siema{
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  width: 30rem;
+  margin-top: 5rem;
+  background-color: var(--bg-content);
+  padding: 1rem 3rem;
+  border-radius: 10px;
+}
+
+.xp-bar{
+  width: 100%;
+  height: 5px;
+  background-color: black;
+}
+
+.stats2{
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
 }

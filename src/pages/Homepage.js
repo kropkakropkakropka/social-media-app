@@ -21,13 +21,14 @@ const Homepage = () => {
     dispatch(logout());
   }
 
-  const fullName = profileInfo.firstname + ' ' + profileInfo.lastname;
+  const username = profileInfo.username;
   const img = profileInfo.profileImg === '' ? 'https://avatars.githubusercontent.com/u/66757774?v=4' : profileInfo.profileImg;
+  const description = false;
 
   return (
     <div id='homepage'>
       <div>
-        <ProfilePreview fullName={fullName} img={img} />
+        <ProfilePreview username={username} img={img}/>
         <button className='logout-button' onClick={logoutButton}>Logout</button>
       </div>
       <div><Post /></div>

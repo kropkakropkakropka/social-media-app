@@ -2,7 +2,10 @@ import React from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faArrowUp, faArrowDown, faComment } from '@fortawesome/free-solid-svg-icons'
 
-function Post() {
+function Post(props) {
+
+    
+
     return (
         <section id='posts'>
             <article className='post'>

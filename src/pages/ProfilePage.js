@@ -27,7 +27,7 @@ const ProfilePage = () => {
         <ProfileInfo fullName={fullName} img={profileImg} description={desc} username={username} posts={posts.length} friends={friends.length} />
       </section>
       <section>
-        <Post />
+        <Post username={username}/>
       </section>
     </section>
   )

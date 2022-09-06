@@ -29,6 +29,20 @@ const postAuth = {
             res.status(500).json("error: " + error);
         }
     },
+    getPosts: async (req, res)=>{
+        try {
+            const {username} = req.body;
+
+            const posts =  await Post.find({username: username});
+            
+            res.json({
+                posts
+            })
+
+        } catch (error) {
+            res.status(500).json("error: " + error);
+        }
+    },
 }
 
 module.exports = postAuth;

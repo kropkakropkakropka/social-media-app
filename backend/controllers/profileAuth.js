@@ -61,7 +61,7 @@ const profileAuth = {
             if (!comparePassword) return res.status(400).json({ message: 'Wrong password' });
 
             const accessToken = createAccessToken({ id: checkUsername._id });
-            const refreshToken = createRefreshToken({ id: checkUsername._id });
+            //const refreshToken = createRefreshToken({ id: checkUsername._id });
 
             res.cookie('refreshtoken', refreshToken, {
                 httpOnly: true,
@@ -119,8 +119,8 @@ const createAccessToken = (payload) => {
     return webtoken.sign(payload, process.env.ACCESS_TOKEN_SECRET, { expiresIn: "1d" }) //returns a web token as string
 }
 
-const createRefreshToken = (payload) => {
-    return webtoken.sign(payload, process.env.REFRESH_TOKEN_SECRET, { expiresIn: "30d" })
-}
+// const createRefreshToken = (payload) => {
+//     return webtoken.sign(payload, process.env.REFRESH_TOKEN_SECRET, { expiresIn: "30d" })
+// }
 
 module.exports = profileAuth;

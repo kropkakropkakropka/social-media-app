@@ -23,7 +23,6 @@ const Homepage = () => {
 
   const username = profileInfo.username;
   const img = profileInfo.profileImg === '' ? 'https://avatars.githubusercontent.com/u/66757774?v=4' : profileInfo.profileImg;
-  const description = false;
 
   return (
     <div id='homepage'>
